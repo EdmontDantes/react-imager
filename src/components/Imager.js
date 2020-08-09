@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import images from './data/ImagesData'
-import './Imager.css'
+
 
 class Imager extends Component {
   state = {
