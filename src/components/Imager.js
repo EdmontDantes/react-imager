@@ -72,10 +72,14 @@ const Imager = (props) => {
           </Button>
         </div>
         <div className={classes.bottomButtonFwdBcwds}>
-          <Button variant="contained" color="secondary">
+          <Button variant="contained" color="secondary" onClick={() => {
+            props.handleLeftScrollImage()
+          }}>
           &lt;
           </Button>
-          <Button variant="contained" color="secondary">
+          <Button variant="contained" color="secondary" onClick={() => {
+            props.handleRightScrollImage()
+          }}>
           &gt;
           </Button>
         </div>

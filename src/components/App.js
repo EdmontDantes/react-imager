@@ -9,11 +9,22 @@ class App extends Component {
   }
 
   handleLeftScrollImage = () => {
+    const valueOfCurrImage = this.state.mainContentImage
+    let extractValueCurrImageNum = Number(valueOfCurrImage.replace('/images/', '').replace('.jpg', ''))
+    let newCurrNum = (extractValueCurrImageNum === 1) ? 12 : extractValueCurrImageNum - 1
+    this.setState({
+      mainContentImage: `/images/${newCurrNum}.jpg` 
+    })
 
   }
 
   handleRightScrollImage = () => {
-
+    const valueOfCurrImage = this.state.mainContentImage
+    let extractValueCurrImageNum = Number(valueOfCurrImage.replace('/images/', '').replace('.jpg', ''))
+    let newCurrNum = extractValueCurrImageNum > 11 ? 1 : extractValueCurrImageNum + 1
+    this.setState({
+      mainContentImage: `/images/${newCurrNum}.jpg` 
+    })
   }
 
   handleRandomImage = () => {
@@ -34,7 +45,12 @@ class App extends Component {
 return(
   <div>
   
-  <Imager thumbnails={this.state.thumbnails} handleThumbnailClick={this.handleThumbnailClick} mainContentImage={this.state.mainContentImage} handleRandomImage={this.handleRandomImage}/>
+  <Imager thumbnails={this.state.thumbnails} 
+          handleThumbnailClick={this.handleThumbnailClick} 
+          mainContentImage={this.state.mainContentImage} 
+          handleRandomImage={this.handleRandomImage} 
+          handleLeftScrollImage={this.handleLeftScrollImage}
+          handleRightScrollImage={this.handleRightScrollImage} />
   
   </div>
 
