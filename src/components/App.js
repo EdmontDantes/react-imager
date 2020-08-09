@@ -5,7 +5,7 @@ import './App.css'
 class App extends Component {
   state = {
     thumbnails: images.slice(),
-    mainContentImage: images.slice(0)
+    mainContentImage: images[0]
   }
 
   handleLeftScrollImage = () => {
@@ -17,21 +17,29 @@ class App extends Component {
   }
 
   handleRandomImage = () => {
-
+    const imageNum = Math.ceil(Math.random() * 12)
+    this.setState ({
+      mainContentImage: `/images/${imageNum}.jpg`
+    })
   }
 
-  handleThumbnailClick = () => {
-    
+  handleThumbnailClick = (imageTxtLink) => {
+
+    this.setState ({
+      mainContentImage: imageTxtLink
+    })
   }
 
   render() {
 return(
-      <div>
-      
-        <Imager />
-      
-      </div>
-      
+  <div>
+  
+  <Imager thumbnails={this.state.thumbnails} handleThumbnailClick={this.handleThumbnailClick} mainContentImage={this.state.mainContentImage} handleRandomImage={this.handleRandomImage}/>
+  
+  </div>
+
+
+
 
 
 
